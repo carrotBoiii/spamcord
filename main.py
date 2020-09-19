@@ -4,16 +4,17 @@ from decouple import config
 client = discord.Client()
 
 bot_token = config('TOKEN')
+prefix = ';'
+check = False
+
+def __init__(self):
+    self.prefix = ';'
+    self.check = False
 
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-
-
-prefix = ';'
-
-check = False
 
 
 @client.event
@@ -28,18 +29,25 @@ try:
     async def on_message(message):
 
         send = ""
+        global prefix
 
-        todo = (message.content.split(prefix, 1)[1] + ' ;end').split(' ' + prefix)
+        todo = message.content.split(prefix, 1)[1].split(' ' + prefix)
 
         if message.author == client.user:
             return
 
         if message.content.startswith(prefix + 'help'):
             await message.channel.send(">>> ***Hey! " + message.author.name + ''',*** you can *spam* messages into any text channel just by typing 
-             `;spam ;[your text] ;[number of times to send]`
-              _Example_ : `;spam ;I am Spamcord ;10`
+             `''' + prefix + '''spam ''' + prefix + '''[your text] ''' + prefix + '''[number of times to send]`
+              _Example_ : `''' + prefix + '''spam ''' + prefix + '''I am Spamcord ''' + prefix + '''10` \n \n Wanna change the prefix `''' + prefix + '''`, I got you covered - type `''' + prefix + '''changepf <your prefix here>`
               
               **ENJOY TROLLING  YOUR FRIENDS XD** :joy:''')
+
+        if message.content.startswith(prefix + 'changepf'):
+            prefix = message.content.split(' ')[1]
+            await message.channel.send(
+                    'Yay! I successfully changed the prefix to ' + prefix + ", on the request of " + message.author.name)
+
         if message.content.startswith(prefix + 'hello') or message.content.startswith(prefix + 'hi'):
             await message.channel.send('Hello! ' + message.author.name)
 
