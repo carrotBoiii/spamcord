@@ -29,6 +29,6 @@
  6. copy this -  TOKEN=[paste your bots api token here]  and paste it there and save
  7. Run the main.py file on your system or server and you are done
  
- Soon you'll see your BOT come online and then use the syntax ;spam ;[text] ;[number of times to send]
+ Soon you'll see your BOT come online and then use the commands above or you can make your own ...
  
 ## Enjoy Trolling your friends XD !! ;)  
