@@ -12,6 +12,7 @@
 |-|-|
 | `;help` | Shows how to use the BOT |
 | `;spam ;<text> ;<number>` | Spams `<text>`, `<number>` times to the channel in which you asked the bot to spam |
+| `;changepf <your new prefix>` | Changes the default `;` prefix to `<your new prefix>` everywhere and now you can type commands with that new prefix |
 
 ###### **\** More commands will be added soon.
 
