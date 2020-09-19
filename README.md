@@ -1,6 +1,6 @@
 <div align="center">
-  <h1 style="color:#C06C84;font-size:45px;"><b>SpamCord</b></h1>
-  <p>Discord bot for spamming messages into your server</p>
+  <h1 style="color:#C06C84;font-size:50px;"><b>SpamCord</b></h1>
+  <p style="color:#F8B195">Discord bot for spamming messages into your server</p>
   <a href="https://discord.com/api/oauth2/authorize?client_id=756482124428738571&permissions=482368&redirect_uri=https%3A%2F%2Fswagat.void%2Fspamcord%2Fadd&scope=bot"><b>Click here to add Spamcord to your server</b></a>
 </div>
 
