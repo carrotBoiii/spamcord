@@ -1,7 +1,7 @@
 <div align="center">
   <h1 style="color:#C06C84;font-size:50px;"><b>SpamCord</b></h1>
   <p style="color:#F8B195">Discord bot for spamming messages into your server</p>
-  <a href="https://discord.com/api/oauth2/authorize?client_id=756482124428738571&permissions=482368&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D%5BCLIENTID%5D%26permissions%3D482368%26redirect_uri%3Dhttps%253A%252F%252Fdiscord.com%252Fapi%252Foauth2%252Fauthorize%253Fclient_id%253D756482124&scope=bot&redirect_uri=https://google.com/callback"><b>Click here to add Spamcord to your server</b></a>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=756482124428738571&permissions=482368&redirect_uri=https%3A%2F%2Fgoogle.com&scope=bot"><b>Click here to add Spamcord to your server</b></a>
 </div>
 
 ---
