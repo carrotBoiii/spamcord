@@ -34,7 +34,13 @@ try:
         if message.author == client.user:
             return
 
-        if message.content.startswith(prefix + 'hello' or prefix + 'hi'):
+        if message.content.startswith(prefix + 'help'):
+            await message.channel.send(">>> ***Hey! " + message.author.name + ''',*** you can *spam* messages into any text channel just by typing 
+             `;spam ;[your text] ;[number of times to send]`
+              _Example_ : `;spam ;I am Spamcord ;10`
+              
+              **ENJOY TROLLING  YOUR FRIENDS XD** :joy:''')
+        if message.content.startswith(prefix + 'hello') or message.content.startswith(prefix + 'hi'):
             await message.channel.send('Hello! ' + message.author.name)
 
         if message.content.startswith(prefix + 'spam'):
