@@ -53,12 +53,17 @@ try:
 
         if message.content.startswith(prefix + 'spam'):
             try:
-                for i in range(int(todo[2])):
-                    global check
-                    await message.channel.send(todo[1])
-                    if check:
-                        check = False
-                        break
+                if todo[2] > 250:
+                    await message.channel.send("Sorry But due to DISCORD Limitations We are not allowed to spam " + todo[2] + " messages to this channel. Please enter a number less than that :D")
+                elif todo[2] < 1:
+                    await message.channel.send("Please enter a valid number ^_^")
+                else:
+                    for i in range(int(todo[2])):
+                        global check
+                        await message.channel.send(todo[1])
+                        if check:
+                            check = False
+                            break
             finally:
                 print(IndexError)
 finally:
