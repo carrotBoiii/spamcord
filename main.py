@@ -16,7 +16,7 @@ def __init__(self):
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     await client.change_presence(status=discord.Status.idle, activity=discord.Activity(
-        type=discord.ActivityType.playing, name="Spam across all servers"
+        type=discord.ActivityType.playing, name=";spam across all servers"
     ))
 
 
