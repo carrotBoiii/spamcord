@@ -13,6 +13,8 @@
 | `;help` | Shows how to use the BOT |
 | `;spam ;<text> ;<number>` | Spams `<text>`, `<number>` times to the channel in which you asked the bot to spam |
 | `;changepf <new prefix>` | Changes the default `;` prefix to `<new prefix>` everywhere and now you can type commands with your own new prefix |
+| `;setcap <number>` | Changes the max spam limit to `<number>` |
+| `;cap` | Displays the current maximum spam limit |
 
 ###### **\** More commands will be added soon.
 
