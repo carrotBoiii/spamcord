@@ -6,6 +6,10 @@
 
 ---
 
+![spam](https://github.com/carrotBoiii/spamcord/blob/src/20997-istock-471531747.jpg?raw=true)
+
+---
+
 ## Commands
 
 | Command | Description |
