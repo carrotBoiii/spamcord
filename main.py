@@ -5,10 +5,12 @@ client = discord.Client()
 
 bot_token = config('TOKEN')
 prefix = ';'
+cap = 250
 check = False
 
 def __init__(self):
     self.prefix = ';'
+    self.cap = 250
     self.check = False
 
 
@@ -33,6 +35,7 @@ try:
 
         send = ""
         global prefix
+        global cap
 
         todo = message.content.split(prefix, 1)[1].split(' ' + prefix)
 
@@ -56,9 +59,9 @@ try:
 
         if message.content.startswith(prefix + 'spam'):
             try:
-                if (int(todo[2]) > 250):
-                    await message.channel.send("Sorry But due to DISCORD Limitations We are not allowed to spam " + todo[2] + " messages to this channel. Please enter a number less than that :D")
-                elif (int(todo[2]) < 1):
+                if int(todo[2]) > cap:
+                    await message.channel.send("Sorry But due to DISCORD Limitations We are not allowed to spam more than " + str(cap) + " messages to this channel. Please enter a number less than that :D")
+                elif int(todo[2]) < 1:
                     await message.channel.send("Please enter a valid number ^_^")
                 else:
                     for i in range(int(todo[2])):
@@ -69,6 +72,14 @@ try:
                             break
             finally:
                 print(IndexError)
+
+        if message.content.startswith(prefix + 'setcap'):
+            await message.channel.send("Noice! now the spam cap is set to " + message.content.split(' ')[1] + ", instead of " + str(cap) + ", on the request of " + message.author.name)
+            cap = int(message.content.split(' ')[1])
+
+        if message.content.startswith(prefix + 'cap'):
+            await message.channel.send("The current spam cap is " + str(cap))
+
 finally:
     print(Exception)
 client.run(bot_token)
