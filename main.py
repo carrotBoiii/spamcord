@@ -1,5 +1,7 @@
 import discord
+import discord.ext
 from decouple import config
+from discord.ext import commands
 
 client = discord.Client()
 
@@ -7,6 +9,7 @@ bot_token = config('TOKEN')
 prefix = ';'
 cap = 250
 check = False
+
 
 def __init__(self):
     self.prefix = ';'
@@ -52,7 +55,7 @@ try:
         if message.content.startswith(prefix + 'changepf'):
             prefix = message.content.split(' ')[1]
             await message.channel.send(
-                    'Yay! I successfully changed the prefix to ' + prefix + ", on the request of " + message.author.name)
+                'Yay! I successfully changed the prefix to ' + prefix + ", on the request of " + message.author.name)
 
         if message.content.startswith(prefix + 'hello') or message.content.startswith(prefix + 'hi'):
             await message.channel.send('Hello! ' + message.author.name)
@@ -60,13 +63,21 @@ try:
         if message.content.startswith(prefix + 'spam'):
             try:
                 if int(todo[2]) > cap:
-                    await message.channel.send("Sorry But due to DISCORD Limitations We are not allowed to spam more than " + str(cap) + " messages to this channel. Please enter a number less than that :D")
+                    await message.channel.send(
+                        "Sorry But due to DISCORD Limitations We are not allowed to spam more than " + str(
+                            cap) + " messages to this channel. Please enter a number less than that :D")
                 elif int(todo[2]) < 1:
                     await message.channel.send("Please enter a valid number ^_^")
                 else:
+                    await message.channel.purge(limit = 1)
                     for i in range(int(todo[2])):
                         global check
                         await message.channel.send(todo[1])
+                        @client.event
+                        async def on_message(ctx):
+                            if ctx.context.startswith(prefix + 'stop'):
+                                check = True
+
                         if check:
                             check = False
                             break
@@ -74,11 +85,21 @@ try:
                 print(IndexError)
 
         if message.content.startswith(prefix + 'setcap'):
-            await message.channel.send("Noice! now the spam cap is set to " + message.content.split(' ')[1] + ", instead of " + str(cap) + ", on the request of " + message.author.name)
+            await message.channel.send(
+                "Noice! now the spam cap is set to " + message.content.split(' ')[1] + ", instead of " + str(
+                    cap) + ", on the request of " + '{}'.format(message.author.mention))
             cap = int(message.content.split(' ')[1])
 
         if message.content.startswith(prefix + 'cap'):
             await message.channel.send("The current spam cap is " + str(cap))
+
+        if message.content.startswith(prefix + 'clear'):
+            if len(message.content.split(' ')) == 1:
+                wt = 11
+            else:
+                wt = int(message.content.split(' ')[1]) + 1
+            await message.channel.purge(limit = wt)
+            await message.channel.send('Aye Aye Captain {}'.format(message.author.mention))
 
 finally:
     print(Exception)
