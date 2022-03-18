@@ -73,11 +73,6 @@ try:
                     for i in range(int(todo[2])):
                         global check
                         await message.channel.send(todo[1])
-                        @client.event
-                        async def on_message(ctx):
-                            if ctx.context.startswith(prefix + 'stop'):
-                                check = True
-
                         if check:
                             check = False
                             break
@@ -96,9 +91,9 @@ try:
                 wt = 11
             else:
                 wt = int(message.content.split(' ')[1]) + 1
-            await message.channel.purge(limit = wt, check = client.user)
-            await message.channel.send('Deleted {} message(s)'.format(wt))
-            await message.channel.send('Aye Aye Captain {}'.format(message.author.mention))
+            await message.channel.purge(limit = wt)
+            await message.channel.send('Aye Aye Captain || {} ||'.format(message.author.mention))
+            await message.channel.send('Deleted {} message(s)'.format(wt - 1))
 
 finally:
     print(Exception)
