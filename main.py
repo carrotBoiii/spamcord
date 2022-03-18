@@ -58,7 +58,7 @@ try:
                 'Yay! I successfully changed the prefix to ' + prefix + ", on the request of " + message.author.name)
 
         if message.content.startswith(prefix + 'hello') or message.content.startswith(prefix + 'hi'):
-            await message.channel.send('Hello! ' + message.author.name)
+            await message.channel.send('Henlo! {}'.format(message.author.mention))
 
         if message.content.startswith(prefix + 'spam'):
             try:
@@ -85,9 +85,7 @@ try:
                 print(IndexError)
 
         if message.content.startswith(prefix + 'setcap'):
-            await message.channel.send(
-                "Noice! now the spam cap is set to " + message.content.split(' ')[1] + ", instead of " + str(
-                    cap) + ", on the request of " + '{}'.format(message.author.mention))
+            await message.channel.send("Noice! now the spam cap is set to " + message.content.split(' ')[1] + ", instead of " + str(cap))
             cap = int(message.content.split(' ')[1])
 
         if message.content.startswith(prefix + 'cap'):
@@ -98,7 +96,8 @@ try:
                 wt = 11
             else:
                 wt = int(message.content.split(' ')[1]) + 1
-            await message.channel.purge(limit = wt)
+            await message.channel.purge(limit = wt, check = client.user)
+            await message.channel.send('Deleted {} message(s)'.format(wt))
             await message.channel.send('Aye Aye Captain {}'.format(message.author.mention))
 
 finally:
